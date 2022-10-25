@@ -197,10 +197,11 @@ extension HomeVC {
     func canSearh() -> Bool {
         self.view.endEditing(true)
         if let text = searchTextField.text, text.count > 0 {
-            search(text)
             if item.isNavigation {
                 FirebaseUtil.logEvent(name: .navigaSearch, params: ["lig": text])
+                
             }
+            search(text)
             return true
         }
         alert("Please enter your search content.")
