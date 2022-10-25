@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TabCell" customModule="BrowserGo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="147" height="162"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="147" height="162"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Navigation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIH-jB-sEp">
+                        <rect key="frame" x="7.0000000000000036" y="10" width="60.333333333333343" height="14.333333333333336"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0T-oz-dvd">
+                        <rect key="frame" x="126" y="7" width="14" height="22"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="tab_close"/>
+                        <connections>
+                            <action selector="deleteAction" destination="gTV-IL-0wX" eventType="touchUpInside" id="j2W-12-rhy"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="xIH-jB-sEp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="7" id="2gb-ec-3iO"/>
+                <constraint firstItem="g0T-oz-dvd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="7" id="RDC-AB-E73"/>
+                <constraint firstItem="xIH-jB-sEp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="hLj-Ft-I3x"/>
+                <constraint firstAttribute="trailing" secondItem="g0T-oz-dvd" secondAttribute="trailing" constant="7" id="sLb-PR-vSe"/>
+            </constraints>
+            <size key="customSize" width="147" height="162"/>
+            <connections>
+                <outlet property="closeButton" destination="g0T-oz-dvd" id="2Cc-ph-ito"/>
+                <outlet property="navigationLabel" destination="xIH-jB-sEp" id="lUb-aF-ILB"/>
+            </connections>
+            <point key="canvasLocation" x="88.461538461538453" y="60.426540284360186"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="tab_close" width="14" height="14"/>
+    </resources>
+</document>
