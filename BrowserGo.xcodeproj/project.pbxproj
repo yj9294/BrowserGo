@@ -505,7 +505,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 7HTJ8C6E28;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowserGo/Info.plist;
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "  3. Please allow access to your activity tracking to provide personalized push services and reduce interference caused by irrelevant services.\n  3. Please allow access to your activity tracking to provide personalized push services and reduce interference caused by irrelevant services.";
@@ -521,7 +521,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.testbird.BrowserGo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.browser.go.nice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -541,7 +541,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 7HTJ8C6E28;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowserGo/Info.plist;
 				INFOPLIST_KEY_NSUserTrackingUsageDescription = "  3. Please allow access to your activity tracking to provide personalized push services and reduce interference caused by irrelevant services.\n  3. Please allow access to your activity tracking to provide personalized push services and reduce interference caused by irrelevant services.";
@@ -557,7 +557,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.testbird.BrowserGo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.browser.go.nice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
