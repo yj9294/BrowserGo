@@ -29,16 +29,40 @@ class CleanVC: BaseVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        GADUtil.share.load(.interstitial)
+        
         // Do any additional setup after loading the view.
         view.insertSubview(animationView, at: 1)
         animationView.play()
-        animationView.center = CGPoint(x: view.center.x, y: view.center.y)
+        animationView.center = CGPoint(x: view.center.x, y: view.center.y - 150)
         animationView.bounds = CGRect(x: 0, y: 0, width: 198, height: 198)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.animationView.stop()
-            self.completion?()
-            self.dismiss(animated: true)
+        
+        var duration = 15.6
+        var needShowAD = false
+        var progress = 0.0
+        Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true) { [weak self] timer in
+            guard let self = self else { return }
+            if progress >= 1.0 {
+                timer.invalidate()
+                GADUtil.share.show(.interstitial, vc: self) { _ in
+                    self.animationView.stop()
+                    self.completion?()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        self.dismiss(animated: true)
+                    }
+                }
+            } else {
+                progress += 1.0 / (duration * 100)
+            }
+            if needShowAD, GADUtil.share.isLoaded(.interstitial) {
+                duration = 0.1
+            }
+        }
+        
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { timer in
+            timer.invalidate()
+            needShowAD = true
+            duration = 15.6
         }
     }
     

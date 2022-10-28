@@ -10,15 +10,60 @@ import UIKit
 class TabVC: BaseVC {
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var adView: NativeADView!
     
     var dataSource: [BrowseItem] {
         BrowseUtil.shared.items
     }
+    
+    var adImpressionDate: Date? {
+        GADUtil.share.tabNativeAdImpressionDate
+    }
+    
+    var willApear = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.register(UINib(nibName: "TabCell", bundle: .main), forCellWithReuseIdentifier: "TabCell")
         FirebaseUtil.logEvent(name: .tabShow)
+        
+        NotificationCenter.default.addObserver(forName: .nativeUpdate, object: nil, queue: .main) { [weak self] noti in
+            
+            // native ad is being display.
+            if let ad = noti.object as? NativeADModel, self?.willApear == true {
+
+                // view controller impression ad date betwieen 10s to show ad
+                if Date().timeIntervalSince1970 - (self?.adImpressionDate ?? Date(timeIntervalSinceNow: -11)).timeIntervalSince1970 > 10 {
+                    self?.adView.nativeAd = ad.nativeAd
+                    GADUtil.share.tabNativeAdImpressionDate = Date()
+                } else {
+                    SLog("[AD] 10s tab 原生广告刷新或数据填充间隔.")
+                }
+            } else {
+                self?.adView.nativeAd = nil
+            }
+        }
+        
+        // native ad enterbackground
+        NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: .main) { [weak self] _ in
+            GADUtil.share.close(.native)
+            self?.willApear = false
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        willApear = true
+
+        GADUtil.share.load(.interstitial)
+        GADUtil.share.load(.native)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        willApear = false
+        GADUtil.share.close(.native)
     }
 
     @IBAction func newAction() {

@@ -16,6 +16,8 @@ class HomeVC: BaseVC {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var tabButton: UIButton!
     
+    @IBOutlet weak var adView: NativeADView!
+    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var contentView: UIView!
@@ -24,7 +26,12 @@ class HomeVC: BaseVC {
         BrowseUtil.shared.item
     }
     
+    var adImpressionDate: Date? {
+        GADUtil.share.homeNativeAdImpressionDate
+    }
+    
     var startLoadDate: Date = Date()
+    var willApear = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,15 +45,47 @@ class HomeVC: BaseVC {
         NotificationCenter.default.addObserver(forName: UIApplication.keyboardWillHideNotification, object: nil, queue: .main) { [weak self] _ in
             self?.keyboardWillHidden()
         }
+        
+        NotificationCenter.default.addObserver(forName: .nativeUpdate, object: nil, queue: .main) { [weak self] noti in
+            
+            // native ad is being display.
+            if let ad = noti.object as? NativeADModel, self?.willApear == true {
+
+                // view controller impression ad date betwieen 10s to show ad
+                if Date().timeIntervalSince1970 - (self?.adImpressionDate ?? Date(timeIntervalSinceNow: -11)).timeIntervalSince1970 > 10 {
+                    self?.adView.nativeAd = ad.nativeAd
+                    GADUtil.share.homeNativeAdImpressionDate = Date()
+                } else {
+                    SLog("[AD] 10s home 原生广告刷新或数据填充间隔.")
+                }
+            } else {
+                self?.adView.nativeAd = nil
+            }
+        }
+        
+        // native ad enterbackground
+        NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: .main) { [weak self] _ in
+            GADUtil.share.close(.native)
+            self?.willApear = false
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        willApear = true
         refreshUI()
         FirebaseUtil.logEvent(name: .homeShow)
         if item.isNavigation {
             FirebaseUtil.logEvent(name: .navigaShow)
+            GADUtil.share.load(.native)
+            GADUtil.share.load(.interstitial)
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        willApear = false
+        GADUtil.share.close(.native)
     }
     
     override func viewDidLayoutSubviews() {
@@ -97,7 +136,7 @@ class HomeVC: BaseVC {
             let vc = CleanVC {
                 FirebaseUtil.logEvent(name: .cleanSuccess)
                 BrowseUtil.shared.clean()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                     if AppRootVC?.selectedIndex == 1 {
                         self.alert("Cleaned successful.")
                         FirebaseUtil.logEvent(name: .cleanAlert)

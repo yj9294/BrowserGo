@@ -36,7 +36,10 @@
 		C7CD948A29069DAD0007C5DD /* HtmlVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CD948829069DAD0007C5DD /* HtmlVC.swift */; };
 		C7CD948B29069DAD0007C5DD /* HtmlVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = C7CD948929069DAD0007C5DD /* HtmlVC.xib */; };
 		C7CD948D2906AA1B0007C5DD /* FirebaseUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CD948C2906AA1B0007C5DD /* FirebaseUtil.swift */; };
-		C7CD9496290A21B70007C5DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7CD9495290A21B70007C5DD /* GoogleService-Info.plist */; };
+		C7CD9498290A22B70007C5DD /* GADUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CD9497290A22B70007C5DD /* GADUtil.swift */; };
+		C7CD949A290A28170007C5DD /* admob.json in Resources */ = {isa = PBXBuildFile; fileRef = C7CD9499290A28170007C5DD /* admob.json */; };
+		C7CD949C290A53750007C5DD /* NativeADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CD949B290A53750007C5DD /* NativeADView.swift */; };
+		C7CD94A2290BACFF0007C5DD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C7CD94A1290BACFF0007C5DD /* GoogleService-Info.plist */; };
 		E90E9023FC8220957366F9B3 /* Pods_BrowserGo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84D35369B72A5A80BE35BAC3 /* Pods_BrowserGo.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,7 +77,10 @@
 		C7CD948829069DAD0007C5DD /* HtmlVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HtmlVC.swift; sourceTree = "<group>"; };
 		C7CD948929069DAD0007C5DD /* HtmlVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HtmlVC.xib; sourceTree = "<group>"; };
 		C7CD948C2906AA1B0007C5DD /* FirebaseUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUtil.swift; sourceTree = "<group>"; };
-		C7CD9495290A21B70007C5DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C7CD9497290A22B70007C5DD /* GADUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GADUtil.swift; sourceTree = "<group>"; };
+		C7CD9499290A28170007C5DD /* admob.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = admob.json; sourceTree = "<group>"; };
+		C7CD949B290A53750007C5DD /* NativeADView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeADView.swift; sourceTree = "<group>"; };
+		C7CD94A1290BACFF0007C5DD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CB414F41CDC83DF969F1F856 /* Pods-BrowserGo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrowserGo.release.xcconfig"; path = "Target Support Files/Pods-BrowserGo/Pods-BrowserGo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -138,9 +144,10 @@
 				C7CD944A290620FC0007C5DD /* Main.storyboard */,
 				C7CD944D290620FE0007C5DD /* Assets.xcassets */,
 				C7CD944F290620FE0007C5DD /* LaunchScreen.storyboard */,
-				C7CD9495290A21B70007C5DD /* GoogleService-Info.plist */,
+				C7CD94A1290BACFF0007C5DD /* GoogleService-Info.plist */,
 				C7CD9452290620FE0007C5DD /* Info.plist */,
 				C7CD947E290693960007C5DD /* data.json */,
+				C7CD9499290A28170007C5DD /* admob.json */,
 			);
 			path = BrowserGo;
 			sourceTree = "<group>";
@@ -152,6 +159,7 @@
 				C7CD9473290680FA0007C5DD /* TabCell.xib */,
 				C7CD9484290698CB0007C5DD /* SettingCell.swift */,
 				C7CD9485290698CB0007C5DD /* SettingCell.xib */,
+				C7CD949B290A53750007C5DD /* NativeADView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -179,6 +187,7 @@
 		C7CD945A290621830007C5DD /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				C7CD9497290A22B70007C5DD /* GADUtil.swift */,
 				C7CD946A290632450007C5DD /* Util.swift */,
 				C7CD946C290660520007C5DD /* BrowseUtil.swift */,
 				C7CD948C2906AA1B0007C5DD /* FirebaseUtil.swift */,
@@ -256,19 +265,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7CD9496290A21B70007C5DD /* GoogleService-Info.plist in Resources */,
 				C7CD947D290690820007C5DD /* CleanVC.xib in Resources */,
 				C7CD947129067E770007C5DD /* TabVC.xib in Resources */,
 				C7CD9487290698CB0007C5DD /* SettingCell.xib in Resources */,
 				C7CD9451290620FE0007C5DD /* LaunchScreen.storyboard in Resources */,
 				C7CD9483290696030007C5DD /* SettingVC.xib in Resources */,
 				C7CD9469290623A30007C5DD /* LaunchVC.xib in Resources */,
+				C7CD949A290A28170007C5DD /* admob.json in Resources */,
 				C7CD9465290623820007C5DD /* HomeVC.xib in Resources */,
 				C7CD944E290620FE0007C5DD /* Assets.xcassets in Resources */,
 				C7CD9475290680FA0007C5DD /* TabCell.xib in Resources */,
 				C7CD948B29069DAD0007C5DD /* HtmlVC.xib in Resources */,
 				C7CD947F290693960007C5DD /* data.json in Resources */,
 				C7CD944C290620FC0007C5DD /* Main.storyboard in Resources */,
+				C7CD94A2290BACFF0007C5DD /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,11 +361,13 @@
 				C7CD9449290620FC0007C5DD /* ViewController.swift in Sources */,
 				C7CD9445290620FC0007C5DD /* AppDelegate.swift in Sources */,
 				C7CD9486290698CB0007C5DD /* SettingCell.swift in Sources */,
+				C7CD949C290A53750007C5DD /* NativeADView.swift in Sources */,
 				C7CD9461290623640007C5DD /* BaseView.swift in Sources */,
 				C7CD9468290623A30007C5DD /* LaunchVC.swift in Sources */,
 				C7CD947C290690820007C5DD /* CleanVC.swift in Sources */,
 				C7CD9447290620FC0007C5DD /* SceneDelegate.swift in Sources */,
 				C7CD945F2906234E0007C5DD /* BaseVC.swift in Sources */,
+				C7CD9498290A22B70007C5DD /* GADUtil.swift in Sources */,
 				C7CD9474290680FA0007C5DD /* TabCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,13 +514,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 7HTJ8C6E28;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowserGo/Info.plist;
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "  3. Please allow access to your activity tracking to provide personalized push services and reduce interference caused by irrelevant services.\n  3. Please allow access to your activity tracking to provide personalized push services and reduce interference caused by irrelevant services.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Please allow access to your activity tracking to provide personalized push services and reduce interference caused by irrelevant services.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -521,8 +533,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.browser.go.nice.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.browser.go.nice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
@@ -538,13 +551,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 7HTJ8C6E28;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BrowserGo/Info.plist;
-				INFOPLIST_KEY_NSUserTrackingUsageDescription = "  3. Please allow access to your activity tracking to provide personalized push services and reduce interference caused by irrelevant services.\n  3. Please allow access to your activity tracking to provide personalized push services and reduce interference caused by irrelevant services.";
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Please allow access to your activity tracking to provide personalized push services and reduce interference caused by irrelevant services.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -557,8 +570,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.browser.go.nice.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.browser.go.nice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;

@@ -11,4 +11,5 @@ target 'BrowserGo' do
   pod 'Firebase/Crashlytics'
   pod 'Firebase/RemoteConfig'
   pod 'lottie-ios'
+  pod 'Google-Mobile-Ads-SDK'
 end

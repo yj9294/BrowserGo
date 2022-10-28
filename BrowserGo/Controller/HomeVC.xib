@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="BrowserGo" customModuleProvider="target">
             <connections>
+                <outlet property="adView" destination="Mzu-rh-kTv" id="mNb-xz-TZj"/>
                 <outlet property="backButton" destination="aTc-V3-kAd" id="O5V-xP-ChL"/>
                 <outlet property="contentView" destination="wVp-Ig-ubg" id="fPX-oF-hSL"/>
                 <outlet property="nextButton" destination="whl-by-Nsm" id="Sfh-TB-gR5"/>
@@ -38,8 +39,98 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch_icon" translatesAutoresizingMaskIntoConstraints="NO" id="IeK-NT-3vH">
                             <rect key="frame" x="115" y="48" width="160" height="227"/>
                         </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mzu-rh-kTv" customClass="NativeADView" customModule="SmartBrowser" customModuleProvider="target">
+                            <rect key="frame" x="20" y="324.33333333333331" width="350" height="78"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ad_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="mNT-pS-hGX">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="78"/>
+                                </imageView>
+                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HAe-Jq-M7z">
+                                    <rect key="frame" x="15" y="15" width="48" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="HAe-Jq-M7z" secondAttribute="height" multiplier="1:1" id="Grr-bq-2Dv"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ND-WS-rbl">
+                                    <rect key="frame" x="73" y="21" width="132" height="17"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                    <color key="textColor" red="0.50588235294117645" green="0.50588235294117645" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ad_tag" translatesAutoresizingMaskIntoConstraints="NO" id="z4U-9X-FB5">
+                                    <rect key="frame" x="210" y="22" width="25" height="15"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="15" id="BBc-nO-I8J"/>
+                                        <constraint firstAttribute="width" constant="25" id="WAu-6w-xJe"/>
+                                    </constraints>
+                                </imageView>
+                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bln-tz-Aiv">
+                                    <rect key="frame" x="245" y="21.666666666666686" width="90" height="35"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="90" id="a76-aG-CDB"/>
+                                        <constraint firstAttribute="height" constant="35" id="r3L-1y-Mnu"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" backgroundImage="ad_button"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <real key="value" value="17.5"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
+                                    </userDefinedRuntimeAttributes>
+                                </button>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FD6-Nz-pVl">
+                                    <rect key="frame" x="73" y="48" width="152" height="14.666666666666664"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                                    <color key="textColor" red="0.32549019607843138" green="0.32941176470588235" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="z4U-9X-FB5" firstAttribute="centerY" secondItem="3ND-WS-rbl" secondAttribute="centerY" id="0Zi-Vf-Xjx"/>
+                                <constraint firstItem="bln-tz-Aiv" firstAttribute="leading" secondItem="FD6-Nz-pVl" secondAttribute="trailing" constant="20" id="991-3h-NFq"/>
+                                <constraint firstItem="FD6-Nz-pVl" firstAttribute="top" secondItem="3ND-WS-rbl" secondAttribute="bottom" constant="10" id="H8X-Lu-AnC"/>
+                                <constraint firstItem="HAe-Jq-M7z" firstAttribute="leading" secondItem="Mzu-rh-kTv" secondAttribute="leading" constant="15" id="Lf8-dR-Vb5"/>
+                                <constraint firstAttribute="bottom" secondItem="mNT-pS-hGX" secondAttribute="bottom" id="QSd-de-1BB"/>
+                                <constraint firstItem="mNT-pS-hGX" firstAttribute="leading" secondItem="Mzu-rh-kTv" secondAttribute="leading" id="Rq3-GO-No0"/>
+                                <constraint firstItem="z4U-9X-FB5" firstAttribute="leading" secondItem="3ND-WS-rbl" secondAttribute="trailing" constant="5" id="TZl-EL-YOa"/>
+                                <constraint firstItem="FD6-Nz-pVl" firstAttribute="leading" secondItem="HAe-Jq-M7z" secondAttribute="trailing" constant="10" id="aZ1-GV-0ef"/>
+                                <constraint firstAttribute="trailing" secondItem="bln-tz-Aiv" secondAttribute="trailing" constant="15" id="d2O-r2-1Xt"/>
+                                <constraint firstItem="3ND-WS-rbl" firstAttribute="top" secondItem="Mzu-rh-kTv" secondAttribute="top" constant="21" id="dnK-LK-wjS"/>
+                                <constraint firstAttribute="bottom" secondItem="HAe-Jq-M7z" secondAttribute="bottom" constant="15" id="dw1-zo-vdQ"/>
+                                <constraint firstItem="3ND-WS-rbl" firstAttribute="leading" secondItem="HAe-Jq-M7z" secondAttribute="trailing" constant="10" id="g0o-EZ-3Sw"/>
+                                <constraint firstItem="bln-tz-Aiv" firstAttribute="centerY" secondItem="Mzu-rh-kTv" secondAttribute="centerY" id="iJY-JK-dlD"/>
+                                <constraint firstItem="bln-tz-Aiv" firstAttribute="leading" secondItem="z4U-9X-FB5" secondAttribute="trailing" constant="10" id="kXZ-2j-NbB"/>
+                                <constraint firstItem="mNT-pS-hGX" firstAttribute="top" secondItem="Mzu-rh-kTv" secondAttribute="top" id="myL-6k-0lO"/>
+                                <constraint firstAttribute="height" constant="78" id="p49-Es-fJs"/>
+                                <constraint firstItem="HAe-Jq-M7z" firstAttribute="top" secondItem="Mzu-rh-kTv" secondAttribute="top" constant="15" id="ru7-pL-Cbe"/>
+                                <constraint firstAttribute="trailing" secondItem="mNT-pS-hGX" secondAttribute="trailing" id="xsA-RO-GoM"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <outlet property="adTag" destination="z4U-9X-FB5" id="FW5-Qb-Jr6"/>
+                                <outlet property="icon" destination="HAe-Jq-M7z" id="g2j-da-kzl"/>
+                                <outlet property="install" destination="bln-tz-Aiv" id="zfS-Lm-7X9"/>
+                                <outlet property="placeholder" destination="mNT-pS-hGX" id="cEW-Kt-xoh"/>
+                                <outlet property="subTitle" destination="FD6-Nz-pVl" id="lr4-dp-q3y"/>
+                                <outlet property="title" destination="3ND-WS-rbl" id="lR9-hy-eU0"/>
+                            </connections>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Djt-a9-yGv">
-                            <rect key="frame" x="0.0" y="335" width="390" height="152"/>
+                            <rect key="frame" x="0.0" y="415" width="390" height="152"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kaG-ZC-iRh">
                                     <rect key="frame" x="39.666666666666657" y="0.0" width="310.66666666666674" height="152"/>
@@ -266,13 +357,16 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Mzu-rh-kTv" secondAttribute="trailing" constant="20" id="9uZ-VH-Tlm"/>
                         <constraint firstItem="kfi-gI-Wkc" firstAttribute="top" secondItem="IeK-NT-3vH" secondAttribute="bottom" constant="20" id="I74-KA-ZbP"/>
                         <constraint firstItem="IeK-NT-3vH" firstAttribute="centerX" secondItem="wVp-Ig-ubg" secondAttribute="centerX" id="K9N-4u-8E0"/>
-                        <constraint firstItem="Djt-a9-yGv" firstAttribute="top" secondItem="IeK-NT-3vH" secondAttribute="bottom" constant="60" id="Lqv-Pv-9FO"/>
+                        <constraint firstItem="Djt-a9-yGv" firstAttribute="top" secondItem="IeK-NT-3vH" secondAttribute="bottom" constant="140" id="Lqv-Pv-9FO"/>
                         <constraint firstItem="kfi-gI-Wkc" firstAttribute="centerX" secondItem="IeK-NT-3vH" secondAttribute="centerX" id="TSH-Pg-u19"/>
                         <constraint firstAttribute="trailing" secondItem="Djt-a9-yGv" secondAttribute="trailing" id="WtI-qv-Njl"/>
                         <constraint firstItem="Djt-a9-yGv" firstAttribute="leading" secondItem="wVp-Ig-ubg" secondAttribute="leading" id="XlN-8x-VWW"/>
+                        <constraint firstItem="Mzu-rh-kTv" firstAttribute="top" secondItem="kfi-gI-Wkc" secondAttribute="bottom" constant="10" id="hXX-ev-qQt"/>
                         <constraint firstItem="IeK-NT-3vH" firstAttribute="centerY" secondItem="wVp-Ig-ubg" secondAttribute="centerY" constant="-150" id="qBE-xj-cxf"/>
+                        <constraint firstItem="Mzu-rh-kTv" firstAttribute="leading" secondItem="wVp-Ig-ubg" secondAttribute="leading" constant="20" id="yF4-uR-Tkh"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ajf-tJ-5bq">
@@ -477,6 +571,9 @@
         </view>
     </objects>
     <resources>
+        <image name="ad_button" width="87" height="36"/>
+        <image name="ad_placeholder" width="320" height="78"/>
+        <image name="ad_tag" width="25" height="14"/>
         <image name="amazon" width="44" height="44"/>
         <image name="facebook" width="44" height="44"/>
         <image name="gmail" width="44" height="44"/>

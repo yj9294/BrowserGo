@@ -23,6 +23,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         FirebaseApp.configure()
         
+        GADUtil.share.requestRemoteConfig()
+        
         if let url = connectionOptions.urlContexts.first?.url {
             ApplicationDelegate.shared.application(
                     UIApplication.shared,
@@ -47,26 +49,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func sceneDidBecomeActive(_ scene: UIScene) {
         // Called when the scene has moved from an inactive state to an active state.
         // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
+        GADUtil.share.requestRemoteConfig()
+        AppInActive = false
     }
 
     func sceneWillResignActive(_ scene: UIScene) {
         // Called when the scene will move from an active state to an inactive state.
         // This may occur due to temporary interruptions (ex. an incoming phone call).
+        AppInActive = true
     }
+    
 
     func sceneWillEnterForeground(_ scene: UIScene) {
         // Called as the scene transitions from the background to the foreground.
         // Use this method to undo the changes made on entering the background.
         NotificationCenter.default.post(name: .willLaunhceing, object: nil)
+                
         AppEnterBackground = false
         
-        if let vc = window?.rootViewController?.presentedViewController, let pr = vc.presentedViewController {
-            pr.dismiss(animated: true) {
-                vc.dismiss(animated: false)
-            }
-        } else  if  let vc = window?.rootViewController?.presentedViewController {
-            vc.dismiss(animated: true)
-        }
+        AppInActive = false
+
         
         if AppEnterBackgrounded {
             FirebaseUtil.logEvent(name: .openHot)
@@ -81,6 +83,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         AppEnterBackground = true
         if !AppEnterBackgrounded {
             AppEnterBackgrounded = true
+        }
+        
+        if let vc = window?.rootViewController?.presentedViewController, let pr = vc.presentedViewController {
+            pr.dismiss(animated: true) {
+                vc.dismiss(animated: false)
+            }
+        } else  if  let vc = window?.rootViewController?.presentedViewController {
+            vc.dismiss(animated: true)
         }
     }
 
